@@ -3,7 +3,6 @@
 ## Введение
 
 HPP (Hardware Performance Programming) — это интерпретируемый язык программирования, предназначенный для создания консольных приложений. WHP (Web Hardware Programming) — это расширение HPP для веб-разработки, которое позволяет создавать статические веб-страницы. Оба языка предлагают мощные команды для работы с переменными, математическими операциями, условиями и многим другим.
-P.S в языке нету поддержки Русского языка.
 
 ### Использование файлов
 
@@ -14,23 +13,32 @@ P.S в языке нету поддержки Русского языка.
 
 ### Базовые команды
 
-- **var <имя> = <значение>**: объявляет переменную и присваивает значение.
+- **str \ int <имя> = <значение>**: объявляет переменную и присваивает значение.
   - Пример:
     ```HPP
-    var a = 10
+    str a = Hello!
+    int b = 5
     ```
 
-- **input()**: считывает ввод пользователя.
+- **System.ReadLine() \ System.ReadInt()**: считывает ввод пользователя.
   - Пример:
     ```HPP
-    System.out.print Введите ваше имя:
-    var name = input()
+    System.out.str Enter your name:
+    str name = System.ReadLine()
     ```
 
-- **System.output <сообщение>**: выводит сообщение в консоль.Так же выводит значение переменной с res
+- **System.out.int <число>**: выводит число в консоль.Так же выводит значение переменной с #res# или переменную int
   - Пример:
     ```HPP
-    System.output Hello, World!
+    int a = 5
+    System.out.int %a%
+    ```
+
+- **System.out.str <сообщение>**: выводит сообщение в консоль.Так же выводит значение переменной str
+  - Пример:
+    ```HPP
+    str b = Hello!
+    System.out.str %a%
     ```
 
 ### Функции
@@ -40,8 +48,8 @@ P.S в языке нету поддержки Русского языка.
 - ** ^ : делит команды на строки в функции
   - Пример:
     ```HPP
-    func print() { System.out.print %a% ^ System.out.print var a printed }
-    var a = hello
+    func print() { System.out.str %a% ^ System.out.str str a printed }
+    str a = hello
     call_fn print()
     ```
 
@@ -52,45 +60,45 @@ P.S в языке нету поддержки Русского языка.
 - **if <переменная> == <переменная> : <команда>**: выполняет команду, если условие истинно.
   - Пример:
     ```HPP
-    if %a% == %b% : System.out.print a равно %b%
+    if %a% == %b% : System.out.str a equal %b%
     ```
 
 - **if <переменная> != <переменная> : <команда>**: выполняет команду, если условие ложно.
   - Пример:
     ```HPP
-    if %b% != %a% : System.out.print b не равно %a%
+    if %b% != %a% : System.out.str b not equal %a%
     ```
 
 - **if <переменная> > <переменная> : <команда>**: выполняет команду, если переменная больше указанного значения.
   - Пример:
     ```HPP
-    var a = 70
-    if %score% > %a% : System.output Вы прошли!
+    str a = 70
+    if %score% > %a% : System.out.str You passed!
     ```
 
 - **if <переменная> < <переменная> : <команда>**: выполняет команду, если переменная меньше указанного значения.
   - Пример:
     ```HPP
-    var a = 18
-    if %age% < %a% : System.output Вы несовершеннолетний.
+    str a = 18
+    if %age% < %a% : System.out.str You are a minor.
     ```
 
 ### Математические операции
 
-- **System.calc <значение1> <операция> <значение2>**: выполняет математическую операцию с переменными и сохраняет результат в специальной переменной `res`.
+- **System.calc <значение1> <операция> <значение2>**: выполняет математическую операцию с переменными и сохраняет результат в специальной переменной `#res#`.
   - Пример:
     ```HPP
     System.calc %x% + %y%
-    var c = res
-    System.output Сумма: %c%
+    str c = #res#
+    System.out.int %c%
     ```
 
 - **System.math**: проводит операцию между двумя числами.
   - Пример:
     ```HPP
     System.math 5 + 10
-    var c = res
-    System.output Сумма: %c%
+    str c = #res#
+    System.out.int %c%
     ```
 
 ### Массивы
@@ -123,7 +131,7 @@ P.S в языке нету поддержки Русского языка.
 - **array print <имя>**: выводит все элементы массива.
   - Пример:
     ```HPP
-    System.output Элементы массива:
+    System.out.int Элементы массива:
     array print myArray
     ```
 
@@ -155,65 +163,65 @@ P.S в языке нету поддержки Русского языка.
 
 ### Переменные для математических операций
  
-- **set <имя_переменной>**: создает переменную в формате INT для вычислений так же служит переменной для вывода ответа вычислений.
+- **int <имя_переменной>**: создает переменную в формате INT для вычислений так же служит переменной для вывода ответа вычислений.
   -Пример:
   ```HPP
-  set a = 5
-  set b = 7
-  set c = %a% + %b%
-  out.var.value %c%
+  int a = 5
+  int b = 7
+  int c = %a% + %b%
+  System.out.int %c%
   ```
   вывод: 12
 
-  -Если написать var c то результат просто не выведится,если переменным a и b написать var a и var b то получится переменная в формате STR для сложения.
+  -Если написать str c то результат просто не выведится,если переменным a и b написать str a и str b то получится переменная в формате STR для сложения.
   -Пример:
   ```HPP
-  var a = 5
-  var b = 7
-  set c = %a% + %b%
-  out.var.value %c%
+  str a = 5
+  str b = 7
+  int c = %a% + %b%
+  System.out.int %c%
   ```
 
   вывод: 57
 
-  -команда out.var.value служит дял вывода значений перемененных set в которых хранится результат вычислений 
+  -команда System.out.int служит дял вывода значений перемененных int в которых хранится результат вычислений 
 
 ### Пример полного консольного приложения
 
 ```HPP
 public static void Main(String[] args) {
 
-    System.out.print Enter 1-st number
+    System.out.str Enter 1-st number
 
-    var b = input()
+    int b = System.ReadInt()
 
-    System.out.print Enter sign + or - or * or /
+    System.out.str Enter sign + or - or * or /
 
-    var c = input()
+    str c = System.ReadLine()
 
-    System.out.print Enter 2-nd number
+    System.out.str Enter 2-nd number
 
-    var a = input()
+    int a = System.ReadInt()
 
-    var p = +
-    var m = -
-    var y = *
-    var r = /
+    str p = +
+    str m = -
+    str y = *
+    str r = /
 
-    System.out.print Result:
+    System.out.str Result:
     if %c% == %p% : System.calc %b% + %a%
-    var rp = res
+    int rp = #res#
     if %c% == %m% : System.calc %b% - %a%
-    var rm = res
+    int rm = #res#
     if %c% == %y% : System.calc %b% * %a%
-    var ry = res
+    int ry = #res#
     if %c% == %r% : System.calc %b% / %a%
-    var rr = res
+    int rr = #res#
 
-    if %c% == %p% : System.output %rp%
-    if %c% == %m% : System.output %rm%
-    if %c% == %y% : System.output %ry%
-    if %c% == %r% : System.output %rr%
+    if %c% == %p% : System.out.int %rp%
+    if %c% == %m% : System.out.int %rm%
+    if %c% == %y% : System.out.int %ry%
+    if %c% == %r% : System.out.int %rr%
 
 }
 ```
@@ -263,8 +271,8 @@ PRINT Привет, мир!
 ### Список абсолютно всех команд для консольного приложения
 
 ```HPP
-System.out.print
-System.output
+System.out.str
+System.out.int
 System.timeout
 System.cls
 System.type
@@ -272,9 +280,10 @@ System.delete.file
 System.delete.folder
 System.create.file
 System.create.folder
-var
-set
-input() - только в переменных
+str
+int
+System.ReadLine - только в переменных
+System.ReadInt - только в переменных
 System.calc
 System.math
 exit()
@@ -286,10 +295,9 @@ if <
 goto
 call - вызывает другой уже скомпилированный консольный файл с расширением .vvm
 System.start
-out.var.value
 System.pause
-$date$ - только с System.out.print
-$time$ - только с System.out.print
+$date$ - только с System.out.str
+$time$ - только с System.out.str
 array - создает массив
 команды для массива:
 indexout 
