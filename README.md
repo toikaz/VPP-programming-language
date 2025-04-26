@@ -8,6 +8,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 
 - Файлы для консольных приложений должны иметь расширение **`.hpp`**.
 - Файлы для веб-разработки должны иметь расширение **`.whp`**.
+- Что бы сделать исполняемый файл из .hpp нужно написать в консоли hppinstaller <полный путь к файлу.vvm> , тогда скрипт создаст папку которая важна для работы программый и исполняемый батник который будет запускать скрипт на ос на которой может быть не установлен HPP (важно что бы файл и батник были в одной директории)
 
 ## Команды для консольного приложения (HPP)
 
@@ -16,7 +17,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 - **str \ int <имя> = <значение>**: объявляет переменную и присваивает значение.
   - Пример:
     ```HPP
-    str a = "Hello!"
+    str a = Hello!
     int b = 5
     ```
 
@@ -30,7 +31,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 - **System.out.print <сообщение>**: выводит сообщение в консоль.Так же выводит значение переменных
   - Пример:
     ```HPP
-    str b = "Hello!"
+    str b = Hello!
     System.out.print %a%
     ```
 
@@ -42,7 +43,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
   - Пример:
     ```HPP
     func print() { System.out.print %a% ^ System.out.print var a printed }
-    str a = "hello"
+    str a = hello
     call_fn print()
     ```
 
