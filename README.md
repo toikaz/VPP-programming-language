@@ -23,22 +23,15 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 - **System.ReadLine() \ System.ReadInt()**: считывает ввод пользователя.
   - Пример:
     ```HPP
-    System.out.str Enter your name:
+    System.out.print Enter your name:
     str name = System.ReadLine()
     ```
 
-- **System.out.int <число>**: выводит число в консоль.Так же выводит значение переменной с #res# или переменную int
-  - Пример:
-    ```HPP
-    int a = 5
-    System.out.int %a%
-    ```
-
-- **System.out.str <сообщение>**: выводит сообщение в консоль.Так же выводит значение переменной str
+- **System.out.print <сообщение>**: выводит сообщение в консоль.Так же выводит значение переменных
   - Пример:
     ```HPP
     str b = Hello!
-    System.out.str %a%
+    System.out.print %a%
     ```
 
 ### Функции
@@ -48,57 +41,55 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 - ** ^ : делит команды на строки в функции
   - Пример:
     ```HPP
-    func print() { System.out.str %a% ^ System.out.str str a printed }
+    func print() { System.out.print %a% ^ System.out.print var a printed }
     str a = hello
     call_fn print()
     ```
 
 ### Условия
 
-- **if.exist <имя_файла/переменная_с_именем_файла> : <команда>**: проверяет есть ли файл и если есть то выполняет команду.
-
 - **if <переменная> == <переменная> : <команда>**: выполняет команду, если условие истинно.
   - Пример:
     ```HPP
-    if %a% == %b% : System.out.str a equal %b%
+    if %a% == %b% : System.out.print a equal %b%
     ```
 
 - **if <переменная> != <переменная> : <команда>**: выполняет команду, если условие ложно.
   - Пример:
     ```HPP
-    if %b% != %a% : System.out.str b not equal %a%
+    if %b% != %a% : System.out.print b not equal %a%
     ```
 
 - **if <переменная> > <переменная> : <команда>**: выполняет команду, если переменная больше указанного значения.
   - Пример:
     ```HPP
-    str a = 70
-    if %score% > %a% : System.out.str You passed!
+    int a = 70
+    if %score% > %a% : System.out.print You passed!
     ```
 
 - **if <переменная> < <переменная> : <команда>**: выполняет команду, если переменная меньше указанного значения.
   - Пример:
     ```HPP
-    str a = 18
-    if %age% < %a% : System.out.str You are a minor.
+    int a = 18
+    if %age% < %a% : System.out.print You are a minor.
     ```
 
 ### Математические операции
 
-- **System.calc <значение1> <операция> <значение2>**: выполняет математическую операцию с переменными и сохраняет результат в специальной переменной `#res#`.
+- **System.calc <значение1> <операция> <значение2>**: выполняет математическую операцию с переменными и сохраняет результат в специальной переменной int со значением #res#.
   - Пример:
     ```HPP
     System.calc %x% + %y%
-    str c = #res#
-    System.out.int %c%
+    int c = #res#
+    System.out.print %c%
     ```
 
 - **System.math**: проводит операцию между двумя числами.
   - Пример:
     ```HPP
     System.math 5 + 10
-    str c = #res#
-    System.out.int %c%
+    int c = #res#
+    System.out.print %c%
     ```
 
 ### Массивы
@@ -131,7 +122,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 - **array print <имя>**: выводит все элементы массива.
   - Пример:
     ```HPP
-    System.out.int Элементы массива:
+    System.out.print Элементы массива:
     array print myArray
     ```
 
@@ -169,37 +160,35 @@ HPP (Hardware Performance Programming) — это интерпретируемы
   int a = 5
   int b = 7
   int c = %a% + %b%
-  System.out.int %c%
+  System.out.print %c%
   ```
   вывод: 12
 
   -Если написать str c то результат просто не выведится,если переменным a и b написать str a и str b то получится переменная в формате STR для сложения.
   -Пример:
   ```HPP
-  str a = 5
-  str b = 7
-  int c = %a% + %b%
-  System.out.int %c%
+  str a = "Hello, "
+  str b = "World!"
+  str c = %a% + %b%
+  System.out.print %c%
   ```
 
-  вывод: 57
-
-  -команда System.out.int служит дял вывода значений перемененных int в которых хранится результат вычислений 
+  вывод: Hello, World!
 
 ### Пример полного консольного приложения
 
 ```HPP
 public static void Main(String[] args) {
 
-    System.out.str Enter 1-st number
+    System.out.print Enter 1-st number
 
     int b = System.ReadInt()
 
-    System.out.str Enter sign + or - or * or /
+    System.out.print Enter sign + or - or * or /
 
     str c = System.ReadLine()
 
-    System.out.str Enter 2-nd number
+    System.out.print Enter 2-nd number
 
     int a = System.ReadInt()
 
@@ -208,7 +197,7 @@ public static void Main(String[] args) {
     str y = *
     str r = /
 
-    System.out.str Result:
+    System.out.print Result:
     if %c% == %p% : System.calc %b% + %a%
     int rp = #res#
     if %c% == %m% : System.calc %b% - %a%
@@ -218,10 +207,10 @@ public static void Main(String[] args) {
     if %c% == %r% : System.calc %b% / %a%
     int rr = #res#
 
-    if %c% == %p% : System.out.int %rp%
-    if %c% == %m% : System.out.int %rm%
-    if %c% == %y% : System.out.int %ry%
-    if %c% == %r% : System.out.int %rr%
+    if %c% == %p% : System.out.print %rp%
+    if %c% == %m% : System.out.print %rm%
+    if %c% == %y% : System.out.print %ry%
+    if %c% == %r% : System.out.print %rr%
 
 }
 ```
@@ -271,8 +260,7 @@ PRINT Привет, мир!
 ### Список абсолютно всех команд для консольного приложения
 
 ```HPP
-System.out.str
-System.out.int
+System.out.print
 System.timeout
 System.cls
 System.type
@@ -295,9 +283,10 @@ if <
 goto
 call - вызывает другой уже скомпилированный консольный файл с расширением .vvm
 System.start
+out.str.value
 System.pause
-$date$ - только с System.out.str
-$time$ - только с System.out.str
+$date$ - только с System.out.print
+$time$ - только с System.out.print
 array - создает массив
 команды для массива:
 indexout 
