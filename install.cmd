@@ -62,6 +62,7 @@ echo Installing HPP in the custom path: "%custom_path%"...
 if not exist "%custom_path%" mkdir "%custom_path%"
 timeout 1 >nul
 copy bin\hppinstaller.exe "C:\Windows\System32\"
+copy bin\conventor.bat "C:\Windows\System32\"
 copy bin\hpp.exe "%custom_path%\" >nul
 timeout 5 >nul
 copy bin\Uninstall.bat "%custom_path%\" >nul
@@ -90,6 +91,7 @@ echo Installing HPP to system path...
 timeout 1 >nul
 copy bin\hpp.exe "C:\Windows\System32\"
 copy bin\hppinstaller.exe "C:\Windows\System32\"
+copy bin\conventor.bat "C:\Windows\System32\"
 timeout 3 >nul
 copy "bin\hpp_ide.exe" "C:\Users\%username%\Desktop\"
 copy bin\vvm.exe "C:\Windows\System32\"
