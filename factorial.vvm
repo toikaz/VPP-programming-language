@@ -1,0 +1,16 @@
+start
+regset a = 1
+regset f = 1
+ach Enter a number to find the factorial:
+regset b = System.ReadInt()
+if! %a% != %b% | move 11
+if< %a% < %b% | move 11
+if= %a% == %b% | ach Result: %f%
+if= %a% == %b% | System.pause
+if= %a% == %b% | System.cls
+if= %a% == %b% | stop
+regset a = %a% + 1
+regset f = %f% * %a%
+ach %f%
+move 5
+end
