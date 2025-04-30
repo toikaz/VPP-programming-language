@@ -3,7 +3,6 @@ public static void Main(String[] args) {
     System.out.print Enter a number 1.stone 2.scissors 3.paper or 0 to exit:
     int num = System.ReadInt()
     int o = 0
-    if %num% == %o% : System.cls
     if %num% == %o% : exit()
     int k = 1
     int n = 2
