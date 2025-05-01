@@ -136,6 +136,29 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     array print myArray
     ```
 
+### Команды для управления с сетью
+
+- **nbtstat <аргументы>**: команда из Windows.
+  - Пример:
+    ```HPP
+    nbtstat -s
+    ```
+
+- **Все команды для управления с сетью:
+  - ```HPP
+    nbtstat
+    ipconfig
+    netstat
+    tracert
+    traceroute
+    telnet
+    ping
+    pathping
+    nslookup
+    getmac
+    apr
+    ```
+
 ### Управление файлами
 
 - **System.create.file <имя файла>**: создаёт новый файл.
