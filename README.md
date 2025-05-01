@@ -144,7 +144,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     nbtstat -s
     ```
 
-- **Все команды для управления с сетью:
+- Все команды для управления с сетью:
   - ```HPP
     nbtstat
     ipconfig
