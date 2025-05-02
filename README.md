@@ -43,7 +43,25 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     str b = Hello!
     System.out.print %a%
     ```
+### Создание приложения
+- **System.create.window <имя_окна> <разрешение> <разрешение>**: создает окно
+  - Пример:
+    ```HPP
+    System.create.window Calculator 500 200
+    ```
+    
+- **System.create.window <имя_окна> <текст>**: создает текст в указаном окне
+  - Пример:
+    ```HPP
+    System.add_text.window Calculator Hello, World!
+    ```
 
+- **System.get.window <имя_окна> <имя_переменной>**: создает поле дял ввода и сохраняет ввод в переменную
+  - Пример:
+    ```HPP
+    System.get.window Calculator myvar
+    ```
+    
 ### Функции
 
 - **func <имя_функции>() { <команда> }**: создает функцию с командой
