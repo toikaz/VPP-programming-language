@@ -50,7 +50,7 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     System.create.window Calculator 500 200
     ```
     
-- **System.create.window <имя_окна> <текст>**: создает текст в указаном окне
+- **System.add_text.window <имя_окна> <текст>**: создает текст в указаном окне
   - Пример:
     ```HPP
     System.add_text.window Calculator Hello, World!
