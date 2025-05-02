@@ -61,6 +61,12 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     ```HPP
     System.get.window Calculator myvar
     ```
+
+- **System.close.window <имя_окна>**: закрывает окно
+  - Пример:
+    ```HPP
+    System.close.window Calculator
+    ```
     
 ### Функции
 
