@@ -73,6 +73,12 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     ```HPP
     System.clear.window Calculator
     ```
+
+- **System.clear_all_text.window <имя_окна>**: очищает весь текст в окне кроме кнопок и ввода информации
+  - Пример:
+    ```HPP
+    System.clear_all_text.window Calculator
+    ```
     
 - **System.add_button.window <имя_окна> <имя_кнопки> <координата_X> <координата_Y> <размер> <размер> <имя_функции>**: создает кнопку с параметрами а затем при нажатии вызывает указанную функцию
   - Пример:
