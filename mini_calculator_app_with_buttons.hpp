@@ -3,7 +3,7 @@ public static void Main(String[] args) {
     int one = 0
     int two = 0
     
-    System.create.window mini_calculator_app 500 500  
+    System.create.window mini_calculator_app 600 500  
     System.clear.window mini_calculator_app
 
     func one { int one = %one% + 1 ^ System.add_text.window mini_calculator_app first num: ^ System.add_text.window mini_calculator_app %one% }
@@ -28,7 +28,9 @@ public static void Main(String[] args) {
     func ninea { int two = %two% + 9 ^ System.add_text.window mini_calculator_app second num: ^ System.add_text.window mini_calculator_app %two% }
     
     
-    func reset { int one = 0 ^ int two = 0 ^ goto 1 ^ System.add_text.window mini_calculator_app first num = 0 ^ System.add_text.window mini_calculator_app second num = 0 }
+    func reset { int one = 0 ^ int two = 0 ^ goto 1 ^ System.add_text.window mini_calculator_app first num = 0 ^ System.add_text.window mini_calculator_app second num = 0 ^ System.clear_all_text.window mini_calculator_app }
+    
+    func resett { System.clear_all_text.window mini_calculator_app }
     
     
     func plus { int i = %one% + 0 ^ int b = %two% + 0 ^ System.calc %i% + %b% ^ int ty = #res# ^ System.add_text.window mini_calculator_app Result: ^ System.add_text.window mini_calculator_app %ty% }
@@ -59,11 +61,14 @@ public static void Main(String[] args) {
     System.add_button.window mini_calculator_app 8_2 190 210 30 30 eighta
     System.add_button.window mini_calculator_app 9_2 10 250 30 30 ninea
     
+    str poper = "Reset_without_num"
+    
     System.add_button.window mini_calculator_app + 10 400 50 50 plus
     System.add_button.window mini_calculator_app - 60 400 50 50 minus
     System.add_button.window mini_calculator_app * 110 400 50 50 ym
     System.add_button.window mini_calculator_app \ 160 400 50 50 ra
-    System.add_button.window mini_calculator_app Reset 440 400 50 50 reset
+    System.add_button.window mini_calculator_app Reset 540 300 50 50 reset
+    System.add_button.window mini_calculator_app %poper% 480 370 110 80 resett
     System.pause
     
 }
