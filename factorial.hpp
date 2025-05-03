@@ -7,8 +7,6 @@ public static void Main(String[] args) {
     if %a% != %b% : goto 11
     if %a% < %b% : goto 11
     if %a% == %b% : System.out.print Result: %f%
-    if %a% == %b% : System.pause
-    if %a% == %b% : System.cls
     if %a% == %b% : exit()
 
     int a = %a% + 1  
