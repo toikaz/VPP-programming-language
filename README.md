@@ -43,6 +43,33 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     str b = Hello!
     System.out.print %a%
     ```
+
+### Время
+- **System.timeout <время в секундах>**: ждет определенное количество времени
+  - Пример:
+    ```HPP
+    System.timeout 0.5
+    ```
+- **System.pause**: ждет нажатия enter
+  - Пример:
+    ```HPP
+    System.pause
+    ```
+
+### Процессы
+- **System.process.kill <имя_файла_процесса>**: завершает процесс
+  - Пример:
+    ```HPP
+    System.process.kill explorer.exe
+    ```
+
+### Вызов файла .vvm
+- **include <имя_файла.vvm>**: вызывает файл .vvm
+  - Пример:
+    ```HPP
+    include factorial.vvm
+    ```
+    
 ### Создание приложения
 - **System.create.window <имя_окна> <разрешение> <разрешение>**: создает окно
   - Пример:
@@ -212,11 +239,17 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     ```HPP
     System.create.file new_file.txt
     ```
-
+    
 - **System.delete.file <имя файла>**: удаляет указанный файл.
   - Пример:
     ```HPP
     System.delete.file old_file.txt
+    ```
+
+- **System.file.copy <путь к файлу> <путь к копии файла>**: копирует файл в указаную директорию.
+  - Пример:
+    ```HPP
+    System.file.copy file.txt file_copy.txt
     ```
 
 - **System.create.folder <имя папки>**: создаёт новую директорию.
@@ -231,6 +264,24 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     System.delete.folder old_folder
     ```
 
+- **System.file.read <имя файла> <переменная>**: читает файл и сохраняет содержимое файла в переменную.
+  - Пример:
+    ```HPP
+    System.file.read file.txt myvar
+    ```
+
+- **System.file.rename <имя файла> <новое имя файла>**: переименовывает файл.
+  - Пример:
+    ```HPP
+    System.file.rename file.txt file2.txt
+    ```
+    
+- **System.file.move <путь к файлу> <новый путь к файлу>**: перемещает файл.
+  - Пример:
+    ```HPP
+    System.file.move C:\files\file.txt C:\file.txt
+    ```
+    
 ### Переменные для математических операций
  
 - **int <имя_переменной>**: создает переменную в формате INT для вычислений так же служит переменной для вывода ответа вычислений.
@@ -259,38 +310,28 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 ```HPP
 public static void Main(String[] args) {
 
-    System.out.print Enter 1-st number
-
-    int b = System.ReadInt()
-
-    System.out.print Enter sign + or - or * or /
-
-    str c = System.ReadLine()
-
-    System.out.print Enter 2-nd number
-
-    int a = System.ReadInt()
-
-    str p = +
-    str m = -
-    str y = *
-    str r = /
-
-    System.out.print Result:
-    if %c% == %p% : System.calc %b% + %a%
-    int rp = #res#
-    if %c% == %m% : System.calc %b% - %a%
-    int rm = #res#
-    if %c% == %y% : System.calc %b% * %a%
-    int ry = #res#
-    if %c% == %r% : System.calc %b% / %a%
-    int rr = #res#
-
-    if %c% == %p% : System.out.print %rp%
-    if %c% == %m% : System.out.print %rm%
-    if %c% == %y% : System.out.print %ry%
-    if %c% == %r% : System.out.print %rr%
-
+    System.create.window Calculator 500 500
+    System.add_text.window Calculator Enter first number:
+    System.get.window Calculator fn
+    System.add_text.window Calculator Enter second number:
+    System.get.window Calculator sn
+    System.add_text.window Calculator Enter sing + - * /:
+    System.get.window Calculator si
+    str p = "+"
+    str m = "-"
+    str y = "*"
+    str r = "/"
+    if %si% == %p% : int result = %fn% + %sn%
+    if %si% == %p% : System.out.print %result%
+    if %si% == %m% : int result = %fn% - %sn%
+    if %si% == %m% : System.out.print %result%
+    if %si% == %y% : int result = %fn% * %sn%
+    if %si% == %y% : System.out.print %result%
+    if %si% == %r% : int result = %fn% / %sn%
+    if %si% == %r% : System.out.print %result%
+    System.add_text.window Calculator Result:
+    System.add_text.window Calculator %result%
+    
 }
 ```
 
@@ -334,44 +375,6 @@ CSS body { font-family: Arial, sans-serif; background-color: #f0f0f0; }
 JS console.log(Страница загружена.);
 PRINT Привет, мир!
 <WHP_END>
-```
-
-### Список абсолютно всех команд для консольного приложения
-
-```HPP
-System.out.print
-System.timeout
-System.cls
-System.type
-System.delete.file
-System.delete.folder
-System.create.file
-System.create.folder
-str
-int
-System.ReadLine - только в переменных
-System.ReadInt - только в переменных
-System.calc
-System.math
-exit()
-if ==
-if !=
-if >
-if <
-%имя_перменной% - вызывает переменную в других функциях
-goto
-call - вызывает другой уже скомпилированный консольный файл с расширением .vvm
-System.start
-out.str.value
-System.pause
-$date$ - только с System.out.print
-$time$ - только с System.out.print
-array - создает массив
-команды для массива:
-indexout 
-print 
-delete
-add
 ```
 
 ## Заключение
