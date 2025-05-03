@@ -21,6 +21,15 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     int b = 5
     ```
 
+- **str <имя> = split <переменная>**: разделяет str переменную на слова по пробелам и сохраняет каждое слово в указаные имена переменных.
+  - Пример:
+    ```HPP
+    str name = "toika"
+    str text = "My name is toika"
+    str word1 word2 word3 word4 = split %text%
+    if %word4% == %name% : System.out.print Hello %word4%
+    ```
+
 - **int <имя> = Random <значение 1> <значение 2>**: объявляет переменную и присваивает ей рандомное значение в диапозоне 1 значения до 2 значения.
   - Пример:
     ```HPP
