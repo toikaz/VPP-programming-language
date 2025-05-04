@@ -46,7 +46,8 @@ public static void Main(String[] args) {
     if %word0% == division : if %word1% == one : int res = %setone% / %settwo%
     if %word0% == division : if %word1% == one : System.out.print %res%
     if %word0% == save_res_one : array add onea %res%
-    
+    if %word0% == input_one : str takeinput = System.ReadLine()
+    if %word0% == input_one : array add onea %takeinput%
     
     
     
@@ -71,7 +72,8 @@ public static void Main(String[] args) {
     if %word0% == division : if %word1% == two : int res = %setone% / %settwo%
     if %word0% == division : if %word1% == two : System.out.print %res%
     if %word0% == save_res_two : array add twoa %res%
-
+    if %word0% == input_two : str takeinput = System.ReadLine()
+    if %word0% == input_two : array add twoa %takeinput%
 
 
 
@@ -92,7 +94,8 @@ public static void Main(String[] args) {
     if %word0% == division : if %word1% == three : int res = %setone% / %settwo%
     if %word0% == division : if %word1% == three : System.out.print %res%
     if %word0% == save_res_three : array add threea %res%
-
+    if %word0% == input_three : str takeinput = System.ReadLine()
+    if %word0% == input_three : array add threea %takeinput%
     
     
     
@@ -116,7 +119,8 @@ public static void Main(String[] args) {
     if %word0% == division : if %word1% == four : int res = %setone% / %settwo%
     if %word0% == division : if %word1% == four : System.out.print %res%
     if %word0% == save_res_four : array add foura %res%
-
+    if %word0% == input_four : str takeinput = System.ReadLine()
+    if %word0% == input_four : array add foura %takeinput%
 
     
     
