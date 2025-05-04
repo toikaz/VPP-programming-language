@@ -222,37 +222,82 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 
 ### Массивы
 
-- **array <имя> = []**: создаёт новый массив.
+- **array <имя_массива> = []**: Объявляет пустой массив с указанным именем.
   - Пример:
     ```HPP
-    array myArray = []
+    array my_list = []
     ```
 
-- **array add <имя> <значение>**: добавляет элемент в массив.
+- **array add <имя_массива> <значение>**: Добавляет элемент в конец массива. Значение может быть строковым литералом (в кавычках), числовым литералом или переменной (используя `%`).
   - Пример:
     ```HPP
-    array add myArray 10
-    array add myArray 20
+    array my_list = []
+    array add my_list first item
+    str my_var = "test"
+    array add my_list %my_var%
+    array add my_list 123
+    array print my_list
+    ```
+    - **Примечание:** Строковые литералы, заключенные в кавычки, добавляются в массив вместе с кавычками. Числовые литералы добавляются как строки.
+
+- **array delete <имя_массива> <индекс>**: Удаляет элемент массива по указанному индексу. Индексация начинается с 0. Индекс может быть указан как число или как переменная (используя `%`).
+  - Пример:
+    ```HPP
+    array numbers = []
+    array add number 10
+    array add number 20
+    array add number 30
+    array add number 40
+    array delete numbers 1
+    int index_to_delete = 0
+    array delete numbers %index_to_delete%
+    array print numbers
+    ```
+    - **Примечание:** Если индекс выходит за пределы массива, будет выведено сообщение об ошибке, и операция не будет выполнена.
+
+- **array indexout <имя_массива> <индекс>**: Выводит элемент массива по указанному индексу в консоль. Индексация начинается с 0. Индекс может быть указан как число или как переменная (используя `%`).
+  - Пример:
+    ```HPP
+    array fruits = []
+    array add fruits apple
+    array add fruits banana
+    array add fruits cherry
+    array indexout fruits 1
+    int target_index = 2
+    array indexout fruits %target_index% 
+    ```
+    - **Примечание:** Если индекс выходит за пределы массива, будет выведено сообщение об ошибке.Так же нельзя создавать массив уже с элементами, их нужно добавлять.
+
+- **array print <имя_массива>**: Выводит содержимое массива в консоль в формате списка Python.
+  - Пример:
+    ```HPP
+    array print my_array
     ```
 
-- **array indexout <имя> <индекс>**: выводит объект из массива под индексом.
+- **array get <имя_массива> <индекс> <переменная_для_сохранения>**: Получает элемент массива по указанному индексу и сохраняет его в указанную переменную. Индексация начинается с 0. Индекс может быть указан как число или как переменная (используя `%`).
   - Пример:
     ```HPP
-    array indexout myArray 1
+    array fruits = []
+    array add fruits apple
+    array add fruits banana
+    array add fruits cherry
+    array get fruits 1 second_fruit
+    System.out.print second fruit: %second_fruit%
+    int target_index = 0
+    array get fruits %target_index% first_fruit
+    System.out.print first fruit: %first_fruit% 
     ```
+    - **Примечание:** Если индекс выходит за пределы массива, будет выведено сообщение об ошибке, и переменная не будет создана.
 
-- **array delete <имя> <индекс>**: удаляет объект из массива под индексом.
+- **array split <переменная_строки> <имя_массива>**: Разделяет содержимое строковой переменной на подстроки по пробельным символам и сохраняет их как элементы нового массива. Исходная переменная должна быть указана в формате `%переменная_строки%`.
   - Пример:
     ```HPP
-    array delete myArray 1
+    str sentence = "This is a sample sentence."
+    array split %sentence% words_array
+    array print words_array
     ```
+    - **Примечание:** Команда `array split` по умолчанию использует пробельные символы (пробелы, табуляции, переводы строк) в качестве разделителя.
 
-- **array print <имя>**: выводит все элементы массива.
-  - Пример:
-    ```HPP
-    System.out.print Элементы массива:
-    array print myArray
-    ```
 
 ### Команды для управления с сетью
 
