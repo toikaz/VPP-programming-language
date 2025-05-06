@@ -106,6 +106,53 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     System.pause
     ```
 
+### Базы данных
+
+- **DB.open <файл_базы_данных>**: Открывает существующий файл базы данных SQLite (например, mydata.db) или создает его, если он не существует. Устанавливает активное соединение с базой данных.
+
+- **DB.close**: Закрывает текущее активное соединение с базой данных.
+
+- **DB.execute <SQL_запрос>**: Выполняет SQL-запрос, который не возвращает набор данных (например, CREATE TABLE, INSERT, UPDATE, DELETE).
+
+- **DB.query <SQL_запрос> <переменная_для_результата>**: Выполняет SQL-запрос, который возвращает набор данных (например, SELECT), и сохраняет результаты в указанную переменную HPP.
+
+- **DB.commit**: Сохраняет все изменения (операции INSERT, UPDATE, DELETE и т.д.), выполненные с момента последнего DB.commit или DB.rollback.
+
+- **DB.rollback**: Отменяет все изменения (операции INSERT, UPDATE, DELETE и т.д.), выполненные с момента последнего DB.commit или DB.rollback. Возвращает базу данных в предыдущее состояние.
+
+### Пример использования базы данных:
+
+```HPP
+public static void Main(String[] args) {
+
+    DB.open myapp_database.db
+
+    DB.execute CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY, name TEXT NOT NULL, price REAL)
+
+    DB.execute INSERT INTO products (name, price) VALUES ('Keyboard', 75.50)
+    DB.execute INSERT INTO products (name, price) VALUES ('Mouse', 25.00)
+    
+    DB.commit
+    
+    DB.execute INSERT INTO products (name, price) VALUES ('Monitor', 300.00)
+    
+    DB.rollback 
+    
+    DB.query SELECT * FROM products product_list
+    
+    System.out.print All Products:
+    System.out.print %product_list%
+    
+    DB.query SELECT name FROM products WHERE price > 50 expensive_products_names
+    
+    System.out.print Expensive Products:
+    System.out.print %expensive_products_names%
+
+    DB.close
+
+}
+```
+
 ### Процессы
 - **System.process.kill <имя_файла_процесса>**: завершает процесс
   - Пример:
