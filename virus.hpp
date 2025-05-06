@@ -6,9 +6,8 @@ public static void Main(String[] args) {
     System.add_text.window Virus 150 25 Enter a password
     System.get.window Virus pass 50 20 10 10
     str a = "shutdown /s /t 0"
-    int p = 2332
-    if pass != %p% : goto 1
-    if pass == %p% : System.start %a%
+    if %pass% != 2332 : goto 1
+    if %pass% == 2332 : System.start %a%
     goto 1
     
 }
