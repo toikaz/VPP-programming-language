@@ -228,6 +228,53 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     ```
     - **Примечание:** Обязательно нужно использовать полный путь.
 
+###Turtle
+
+- **Turtle.setup <разрешение> <разрешение>**: создает окно Turtle с указаным размером.
+  - Пример:
+    ```HPP
+    Turtle.setup 400 400
+    ```
+    
+- **Turtle.screen.title <имя_окна>**: устанавливает заголовок окна.
+  - Пример:
+    ```HPP
+    Turtle.screen.title Turtle
+    ```
+
+- **Turtle.create**: создает объект черепашку Turtle.
+
+- **Turtle.pencolor <цвет>**: устанавливает цвет пера.
+
+- **Turtle.screen.bgcolor <имя_цвета>**: устанавливает цвет background.
+  - Пример:
+    ```HPP
+    Turtle.screen.bgcolor lightblue
+    ```
+- **Turtle.speed <число>**: устанавливает скорость Turtle.
+
+- **Turtle.pensize <число>**: устанавливает толщену пера.
+ 
+- **Turtle.pendown**: опускает перо.
+
+- **Turtle.penup**: поднимает перо.
+
+- **Turtle.goto <координаты> <координаты>**: перемещает перо
+
+- **Turtle.hideturtle**: скрыть перо.
+
+- **Turtle.showturtle**: показывает перо.
+
+- **Turtle.write Hi from %my_name%! move=False align=center**: пишет текст в окне.
+
+- **Turtle.forward <длинна>**: рисует пером.
+
+- **Turtle.right <длинна>**: рисует пером.
+
+- **Turtle.left <длинна>**: рисует пером.
+
+- **Turtle.backward <длинна>**: рисует пером.
+
 ### Математические операции
 
 - **System.calc <значение1> <операция> <значение2>**: выполняет математическую операцию с переменными и сохраняет результат в специальной переменной int со значением #res#.
