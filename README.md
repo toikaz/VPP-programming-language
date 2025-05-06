@@ -253,6 +253,8 @@ HPP (Hardware Performance Programming) — это интерпретируемы
     ```
 - **Turtle.speed <число>**: устанавливает скорость Turtle.
 
+- **Turtle.circle <число>**: создает круг.
+
 - **Turtle.pensize <число>**: устанавливает толщену пера.
  
 - **Turtle.pendown**: опускает перо.
