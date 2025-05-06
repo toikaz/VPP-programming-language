@@ -109,16 +109,54 @@ HPP (Hardware Performance Programming) — это интерпретируемы
 ### Базы данных
 
 - **DB.open <файл_базы_данных>**: Открывает существующий файл базы данных SQLite (например, mydata.db) или создает его, если он не существует. Устанавливает активное соединение с базой данных.
+  - Пример:
+    ```HPP
+    DB.open my_application.db
+    ```
 
 - **DB.close**: Закрывает текущее активное соединение с базой данных.
+  - Пример:
+    ```HPP
+    DB.close
+    ```
 
 - **DB.execute <SQL_запрос>**: Выполняет SQL-запрос, который не возвращает набор данных (например, CREATE TABLE, INSERT, UPDATE, DELETE).
+  - Пример:
+    ```HPP
+    DB.execute CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)
+
+    str new_user = "Alice"
+    int user_age = 30
+    DB.execute INSERT INTO users (name, age) VALUES ('%new_user%', %user_age%)
+    
+    DB.execute UPDATE users SET age = 31 WHERE name = 'Alice'
+    DB.execute DELETE FROM users WHERE name = 'Bob'
+    ```
 
 - **DB.query <SQL_запрос> <переменная_для_результата>**: Выполняет SQL-запрос, который возвращает набор данных (например, SELECT), и сохраняет результаты в указанную переменную HPP.
+  - Пример:
+    ```HPP
+    DB.query SELECT * FROM users all_users
+    System.out.print All users: %all_users%
+    
+    int min_age = 25
+    DB.query SELECT name FROM users WHERE age > %min_age% young_names
+    System.out.print Young users: %young_names%
+    ```
 
 - **DB.commit**: Сохраняет все изменения (операции INSERT, UPDATE, DELETE и т.д.), выполненные с момента последнего DB.commit или DB.rollback.
+  - Пример:
+    ```HPP
+    DB.execute INSERT INTO products (name, price) VALUES ('Laptop', 1200)
+    DB.commit
+    ```
 
 - **DB.rollback**: Отменяет все изменения (операции INSERT, UPDATE, DELETE и т.д.), выполненные с момента последнего DB.commit или DB.rollback. Возвращает базу данных в предыдущее состояние.
+  - Пример:
+    ```HPP
+    DB.execute INSERT INTO temp_data (value) VALUES (1)
+    DB.rollback
+    ```
 
 ### Пример использования базы данных:
 
@@ -152,6 +190,58 @@ public static void Main(String[] args) {
 
 }
 ```
+
+Объяснение кода:
+
+start: Обозначает начало основной части программы.
+# Открываем или создаем базу данных: Это комментарий, игнорируется интерпретатором.
+DB.open myapp_database.db: Эта команда открывает соединение с базой данных SQLite с именем myapp_database.db. Если файл базы данных не существует, он будет создан.
+# Создаем таблицу, если она не существует (используем IF NOT EXISTS): Комментарий.
+DB.execute CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY, name TEXT NOT NULL, price REAL): Эта команда выполняет SQL-запрос на создание таблицы с именем products.
+IF NOT EXISTS: Гарантирует, что таблица будет создана только в том случае, если она еще не существует. Это предотвращает ошибку при повторном запуске скрипта.
+(id INTEGER PRIMARY KEY, name TEXT NOT NULL, price REAL): Определяет столбцы таблицы:
+id: Целочисленный столбец, который является первичным ключом (уникальный идентификатор для каждой строки) и автоматически увеличивается.
+name: Текстовый столбец, который не может быть пустым (NOT NULL).
+price: Столбец с плавающей точкой для цен.
+# Вставляем данные: Комментарий.
+DB.execute INSERT INTO products (name, price) VALUES ('Keyboard', 75.50): Выполняет SQL-запрос на вставку новой строки в таблицу products со значениями 'Keyboard' для name и 75.50 для price. id будет присвоен автоматически.
+DB.execute INSERT INTO products (name, price) VALUES ('Mouse', 25.00): Вставляет еще одну строку со значениями 'Mouse' и 25.00.
+# Сохраняем изменения: Комментарий.
+DB.commit: Эта команда сохраняет все изменения, внесенные с момента последнего коммита или открытия базы данных. В данном случае, она сохраняет вставку 'Keyboard' и 'Mouse'.
+# Вставляем еще данные, но не коммитим: Комментарий.
+DB.execute INSERT INTO products (name, price) VALUES ('Monitor', 300.00): Вставляет еще одну строку со значениями 'Monitor' и 300.00. Важно: Это изменение пока не сохранено в базе данных, оно находится только в текущей транзакции.
+# Отменяем последнее изменение: Комментарий.
+DB.rollback: Эта команда отменяет все изменения, внесенные с момента последнего коммита. В данном случае, она отменяет вставку 'Monitor'.
+# Запрашиваем все данные: Комментарий.
+DB.query SELECT * FROM products product_list: Выполняет SQL-запрос на выборку всех столбцов (*) из таблицы products. Результат этого запроса (все строки таблицы после отмены вставки 'Monitor') будет сохранен в переменную с именем product_list. Формат сохранения в переменной, как показано в коде, будет строкой, где каждая строка данных из базы данных представлена строкой в переменной, а столбцы разделены запятыми.
+# Выводим результаты: Комментарий.
+System.out.print All Products:: Выводит на консоль строку "All Products:".
+System.out.print %product_list%: Выводит на консоль содержимое переменной product_list. Поскольку вставка 'Monitor' была отменена, здесь будут только строки для 'Keyboard' и 'Mouse'.
+# Запрашиваем только названия продуктов дороже 50: Комментарий.
+DB.query SELECT name FROM products WHERE price > 50 expensive_products_names: Выполняет SQL-запрос на выборку только столбца name из таблицы products для строк, где значение столбца price больше 50. Результат будет сохранен в переменную expensive_products_names.
+# Выводим названия дорогих продуктов: Комментарий.
+System.out.print Expensive Products:: Выводит на консоль строку "Expensive Products:".
+System.out.print %expensive_products_names%: Выводит на консоль содержимое переменной expensive_products_names. Поскольку только 'Keyboard' имеет цену выше 50, здесь будет только строка для 'Keyboard'.
+# Закрываем соединение с базой данных: Комментарий.
+DB.close: Закрывает соединение с базой данных.
+end: Обозначает конец основной части программы.
+Ожидаемый вывод:
+
+Исходя из выполнения команд, ожидаемый вывод на консоль будет следующим:
+
+Copy
+All Products:
+1,Keyboard,75.5
+2,Mouse,25.0
+Expensive Products:
+Keyboard
+Пояснения к выводу:
+
+All Products:: Эта строка выводится командой System.out.print All Products:.
+1,Keyboard,75.5: Это первая строка из переменной product_list. Она соответствует записи 'Keyboard', которая была вставлена и закоммичена. 1 - это автоматически присвоенный id, Keyboard - name, 75.5 (или 75.50 в зависимости от форматирования REAL) - price.
+2,Mouse,25.0: Это вторая строка из переменной product_list. Она соответствует записи 'Mouse', которая также была вставлена и закоммичена. 2 - это автоматически присвоенный id, Mouse - name, 25.0 (или 25.00) - price. Запись 'Monitor' отсутствует, потому что она была отменена командой DB.rollback.
+Expensive Products:: Эта строка выводится командой System.out.print Expensive Products:.
+Keyboard: Это содержимое переменной expensive_products_names. SQL-запрос SELECT name FROM products WHERE price > 50 выбрал только строки, где цена больше 50. Из оставшихся записей ('Keyboard' и 'Mouse'), только 'Keyboard' удовлетворяет этому условию. Поскольку запрос SELECT name выбирает только столбец name, результат содержит только "Keyboard".
 
 ### Процессы
 - **System.process.kill <имя_файла_процесса>**: завершает процесс
