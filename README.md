@@ -228,13 +228,15 @@ public static void Main(String[] args) {
 
 - Исходя из выполнения команд, ожидаемый вывод на консоль будет следующим:
 
-- Copy
-- All Products:
-- 1,Keyboard,75.5
-- 2,Mouse,25.0
-- Expensive Products:
-- Keyboard
-- Пояснения к выводу:
+```
+Copy
+All Products:
+1,Keyboard,75.5
+2,Mouse,25.0
+Expensive Products:
+Keyboard
+Пояснения к выводу:
+```
 
 - All Products:: Эта строка выводится командой System.out.print All Products:.
 - 1,Keyboard,75.5: Это первая строка из переменной product_list. Она соответствует записи 'Keyboard', которая была вставлена и закоммичена. 1 - это автоматически присвоенный id, Keyboard - name, 75.5 (или 75.50 в зависимости от форматирования REAL) - price.
