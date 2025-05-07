@@ -398,6 +398,36 @@ Keyboard
     ```
 - **Turtle.speed <число>**: устанавливает скорость Turtle.
 
+- **Turtle.setx <координата>**: устанавливает координату по x.
+
+- **Turtle.sety <координата>**: устанавливает координату по y.
+
+- **Turtle.setheading <число>**: устанавливает угловое направление черепашки с заданным углом.
+
+- **Turtle.home**
+
+- **Turtle.dot**
+
+- **Turtle.stamp**
+
+- **Turtle.clear**
+
+- **Turtle.reset**
+
+- **Turtle.undo**
+
+- **Turtle.fillcolor**
+
+- **Turtle.begin_fill**
+
+- **Turtle.end_fill**
+
+- **Turtle.isvisible**
+
+- **Turtle.screen.tracer**
+
+- **Turtle.screen.update**
+
 - **Turtle.circle <число>**: создает круг.
 
 - **Turtle.pensize <число>**: устанавливает толщену пера.
