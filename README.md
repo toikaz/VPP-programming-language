@@ -623,6 +623,156 @@ Keyboard
     - **Примечание:** Команда `array split` по умолчанию использует пробельные символы (пробелы, табуляции, переводы строк) в качестве разделителя.
 
 
+### Ассоциативные массивы (Map)
+
+Ассоциативные массивы, или карты (Map), позволяют хранить данные в виде пар "ключ-значение". Каждый уникальный ключ связан с определенным значением. Это удобно для организации данных, где вам нужен быстрый доступ к значению по его имени или идентификатору.
+
+- **map <имя_карты> = {}**: Объявляет пустую карту с указанным именем.
+  - Пример:
+    ```HPP
+    map user_data = {}
+    System.out.print Создана пустая карта user_data
+    ```
+
+- **map add <имя_карты> <ключ> <значение>**: Добавляет или обновляет пару "ключ-значение" в указанной карте. Если ключ уже существует, его значение будет перезаписано. Значение может быть строковым литералом (в кавычках), числовым литералом или переменной (используя `%`).
+  - Пример:
+    ```HPP
+    map user_data = {}
+    map add user_data username admin
+    str user_id = "101"
+    map add user_data id %user_id%
+    map add user_data is_active true
+    System.out.print Добавлены данные в карту user_data
+    ```
+    - **Примечание:** Строковые литералы, заключенные в кавычки, добавляются в карту вместе с кавычками.
+
+- **map delete <имя_карты> <ключ>**: Удаляет пару "ключ-значение" из указанной карты по заданному ключу. Ключ может быть указан как литерал или как переменная (используя `%`).
+  - Пример:
+    ```HPP
+    map user_data = {}
+    map add user_data username admin
+    map add user_data password secret123
+    System.out.print Карта до удаления:
+    map print user_data map_content
+    System.out.print %map_content%
+
+    map delete user_data password
+    System.out.print Карта после удаления password:
+    map print user_data map_content_after_delete
+    System.out.print %map_content_after_delete%
+    ```
+    - **Примечание:** Если ключ или карта не найдены, будет выведено соответствующее сообщение.
+
+- **map key <имя_карты> <ключ> <переменная_для_сохранения>**: Извлекает значение, связанное с заданным ключом, и сохраняет его в указанную переменную. Ключ может быть указан как литерал или как переменная (используя `%`).
+  - Пример:
+    ```HPP
+    map config = {}
+    map add config server_address 192.168.1.1
+    map add config port 8080
+
+    map key config server_address server_var
+    System.out.print Server address: %server_var%
+
+    str key_name = "port"
+    map key config %key_name% port_var
+    System.out.print Port: %port_var%
+    ```
+    - **Примечание:** Если ключ или карта не найдены, будет выведено соответствующее сообщение, и переменная будет содержать пустую строку ("").
+
+- **map print <имя_карты> <переменная_для_сохранения>**: Форматирует содержимое карты в строку и сохраняет эту строку в указанную переменную. Строка будет содержать пары "ключ:значение", разделенные запятой с пробелом (например, `"key1:value1, key2:value2"`).
+  - Пример:
+    ```HPP
+    map settings = {}
+    map add settings theme dark
+    map add settings language en
+    map add settings font_size 12
+
+    map print settings settings_string
+    System.out.print Settings: %settings_string%
+    ```
+    - **Примечание:** Если карта не найдена, будет выведено сообщение об ошибке, и переменная будет содержать пустую строку ("").
+
+- **map keys <имя_карт> <переменная_для_сохранения>**: Извлекает все ключи из указанной карты и сохраняет их в виде строки, разделенной пробелами, в указанную переменную.
+  - Пример:
+    ```HPP
+    map inventory = {}
+    map add inventory apple 10
+    map add inventory banana 5
+    map add inventory cherry 20
+
+    map keys inventory item_keys
+    System.out.print Inventory items: %item_keys%
+    ```
+    - **Примечание:** Если карта не найдена, будет выведено сообщение об ошибке, и переменная будет содержать пустую строку ("").
+
+- **map remove <имя_карты>**: Полностью удаляет карту.
+  - Пример:
+    ```HPP
+    map temp_data = {}
+    map add temp_data key1 value1
+    System.out.print Карта temp_data создана.
+    
+    map remove temp_data
+    System.out.print Карта temp_data удалена.
+
+    # Попытка обратиться к удаленной карте вызовет ошибку
+    map size temp_data temp_size
+    System.out.print Размер temp_data: %temp_size%
+    ```
+    - **Примечание:** После удаления карты все данные, которые она содержала, будут потеряны.
+
+- **map size <имя_карты> <переменная_для_сохранения>**: Получает количество пар "ключ-значение" в указанной карте (ее размер) и сохраняет его в указанную переменную.
+  - Пример:
+    ```HPP
+    map items = {}
+    map add items item1 A
+    map add items item2 B
+    map add items item3 C
+
+    map size items items_count
+    System.out.print Количество элементов в items: %items_count%
+
+    map remove items
+    map size items items_count_after_remove
+    System.out.print Количество элементов в items после удаления: %items_count_after_remove%
+    ```
+    - **Примечание:** Если карта не найдена, будет выведено сообщение об ошибке, и переменная будет содержать "0".
+
+#### Условные команды для Map
+
+Эти команды позволяют выполнить другую команду только при выполнении определенного условия, связанного с картой.
+
+- **map.haskey <имя_карты> <ключ> : <команда>**: Выполняет `<команда>`, если указанный ключ существует в указанной карте. Ключ может быть указан как литерал или как переменная (используя `%`).
+  - Пример:
+    ```HPP
+    map user_prefs = {}
+    map add user_prefs theme dark
+    map add user_prefs notifications true
+
+    map.haskey user_prefs theme : System.out.print Настройка темы найдена.
+    map.haskey user_prefs language : System.out.print Настройка языка найдена. # Эта строка не будет выведена
+    
+    str check_key = "notifications"
+    map.haskey user_prefs %check_key% : System.out.print Настройка уведомлений найдена.
+    ```
+    - **Примечание:** Если карта не найдена, условие также будет считаться ложным.
+
+- **map.hasvalue <имя_карты> <значение> : <команда>**: Выполняет `<команда>`, если указанное значение существует хотя бы в одной паре "ключ-значение" в указанной карте. Значение может быть указано как литерал или как переменная (используя `%`).
+  - Пример:
+    ```HPP
+    map status = {}
+    map add status user_status online
+    map add status system_status running
+
+    map.hasvalue status online : System.out.print Кто-то онлайн.
+    map.hasvalue status offline : System.out.print Никто не оффлайн. # Эта строка не будет выведена
+
+    str check_value = "running"
+    map.hasvalue status %check_value% : System.out.print Система работает.
+    ```
+    - **Примечание:** Если карта не найдена, условие также будет считаться ложным.
+
+
 ### Команды для управления с сетью
 
 - **nbtstat <аргументы>**: команда из Windows.
